@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct ButtonView: View {
-    @State private var count: Int = 0
+    let students = ["Harry", "Hermione", "Ron"]
+    @State private var selectedStudent = "Harry"
     var body: some View {
-        VStack {
-            Text("\(count)")
-                .font(.title2)
-            Button {
-             count += 1
-            }label: {
-                Text("増えるよ")
+        NavigationStack {
+            Form {
+                Picker("Select your student", selection: $selectedStudent ) {
+                    ForEach(students, id: \.self) {
+                        Text($0)
+                    }
+                }
             }
         }
     }

@@ -48,6 +48,11 @@ struct ContentView: View {
                     Text(member)
                 }
             }
+            Picker("あなたは誰", selection: $addMember) {
+                ForEach (members, id: \.self) {
+                    Text($0)
+                }
+            }
             Text("\(Calculate(members: members, money: money))円で分けてね")
         }
         .padding()
